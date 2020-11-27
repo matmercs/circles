@@ -4,9 +4,10 @@ from PyQt5 import uic
 from PyQt5.QtGui import QPainter, QColor
 from PyQt5.QtWidgets import QWidget, QApplication
 import random
+from circles import Ui_Circles
 
 
-class Circles(QWidget):
+class Circles(QWidget, Ui_Circles):
     def __init__(self):
         super(Circles, self).__init__()
         self.qp = QPainter()
@@ -27,7 +28,9 @@ class Circles(QWidget):
             self.draw = True
 
     def draw_circle(self, qp):
-        qp.setBrush(QColor(255, 255, 0))
+        qp.setBrush(QColor(random.randint(0, 255),
+                           random.randint(0, 255),
+                           random.randint(0, 255)))
         size = random.randint(5, 200)
         qp.drawEllipse(240, 100, size, size)
 
